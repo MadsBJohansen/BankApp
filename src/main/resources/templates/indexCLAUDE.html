@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank</title>
+    <link rel="stylesheet" th:href="@{/bankAccountsCLAUDE.css}">
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-logo" th:href="@{/}">Bunch Bank</a>
+    <a th:href="@{/bankAccounts}">Accounts</a>
+</nav>
+
+<main class="hero">
+    <p>A CRUD example.</p>
+    <h1>Deposit. Withdraw. Transfer.</h1>
+    <p>Manage all your teams bank accounts in one place.</p>
+    <a class="btn" th:href="@{/bankAccounts}">Show all accounts</a>
+</main>
+
+</body>
+</html>

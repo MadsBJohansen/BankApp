@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Account</title>
+    <link rel="stylesheet" th:href="@{/bankAccountsCLAUDE.css}">
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-logo" th:href="@{/}">Bunch Bank</a>
+    <a th:href="@{/bankAccounts}">Accounts</a>
+</nav>
+
+<main class="page">
+    <form class="card form-card" method="post"
+          th:action="@{/bankAccounts/createBankAccount}" th:object="${bankAccount}">
+        <h1>New account</h1>
+        <p class="muted">Fill in the details below.</p>
+
+        <label for="accountNumber">Account number</label>
+        <input type="text" id="accountNumber" th:field="*{accountNumber}" inputmode="numeric"
+               pattern="\d{8}" maxlength="8" placeholder="8 digits" required>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Full name" required>
+
+        <button class="btn" type="submit">Create account</button>
+        <a class="cancel" th:href="@{/bankAccounts}">Cancel</a>
+    </form>
+</main>
+
+</body>
+</html>

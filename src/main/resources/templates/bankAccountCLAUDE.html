@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <link rel="stylesheet" th:href="@{/bankAccountsCLAUDE.css}">
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-logo" th:href="@{/}">Bunch Bank</a>
+    <a th:href="@{/bankAccounts}">Accounts</a>
+</nav>
+
+<main class="page">
+
+    <!-- Kontooplysninger -->
+    <section class="card account-hero">
+        <h2 th:text="${bankAccount.name}">Name</h2>
+        <p class="muted" th:text="|Account No. ${bankAccount.accountNumber}|">Account No. 12345678</p>
+        <div class="account-balance"
+             th:text="|${#numbers.formatDecimal(bankAccount.balance, 1, 'POINT', 2, 'COMMA')} kr.|">0,00 kr.</div>
+    </section>
+
+    <!-- Handlinger -->
+    <section class="actions">
+        <form class="card" method="post"
+              th:action="@{/bankAccounts/{accountNumber}/deposit(accountNumber=${bankAccount.accountNumber})}">
+            <h2>Deposit</h2>
+            <label for="depositAmount">Amount</label>
+            <input type="number" id="depositAmount" name="amount" step="0.01" min="0.01" placeholder="0,00" required>
+            <button class="btn" type="submit">Deposit</button>
+        </form>
+
+        <form class="card" method="post"
+              th:action="@{/bankAccounts/{accountNumber}/withdraw(accountNumber=${bankAccount.accountNumber})}">
+            <h2>Withdraw</h2>
+            <label for="withdrawAmount">Amount</label>
+            <input type="number" id="withdrawAmount" name="amount" step="0.01" min="0.01" placeholder="0,00" required>
+            <button class="btn" type="submit">Withdraw</button>
+        </form>
+
+        <form class="card" method="post"
+              th:action="@{/bankAccounts/{accountNumber}/transfer(accountNumber=${bankAccount.accountNumber})}">
+            <h2>Transfer</h2>
+            <label for="transferAmount">Amount</label>
+            <input type="number" id="transferAmount" name="amount" step="0.01" min="0.01" placeholder="0,00" required>
+            <label for="toAccountNumber">To account</label>
+            <input type="text" id="toAccountNumber" name="toAccountNumber" inputmode="numeric" pattern="\d{8}"
+                   maxlength="8" placeholder="8 digits" required>
+            <button class="btn" type="submit">Transfer</button>
+        </form>
+    </section>
+
+    <!-- Slet konto -->
+    <form class="danger-zone" method="post"
+          th:action="@{/bankAccounts/{accountNumber}/deleteAccount(accountNumber=${bankAccount.accountNumber})}"
+          onsubmit="return confirm('Delete this account?')">
+        <button class="btn-danger" type="submit">Delete account</button>
+    </form>
+
+</main>
+
+</body>
+</html>

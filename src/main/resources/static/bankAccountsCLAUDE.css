@@ -1,0 +1,270 @@
+:root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --border: #d2d2d7;
+    --blue: #0071e3;
+    --blue-hover: #0077ed;
+    --red: #ff3b30;
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.muted {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.nav-logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ---------- Layout ---------- */
+.page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+/* ---------- Knapper ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 980px;
+    background: var(--blue);
+    color: #fff;
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--blue-hover);
+}
+
+.btn-danger {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--red);
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Forside ---------- */
+.hero {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 64px;
+}
+
+.hero p {
+    margin: 0 0 16px;
+    font-size: 24px;
+    color: var(--muted);
+}
+
+/* ---------- Kort ---------- */
+.card {
+    padding: 28px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.account-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.account-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.account-name {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.account-number {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.account-balance {
+    margin-top: 24px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Kontoside ---------- */
+.account-hero {
+    margin-bottom: 20px;
+    padding: 48px 28px;
+    text-align: center;
+}
+
+.account-hero .account-balance {
+    margin-top: 8px;
+    font-size: 56px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.actions form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.actions .btn {
+    margin-top: auto;
+}
+
+.danger-zone {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* ---------- Formularer ---------- */
+label {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 17px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.form-card .btn {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.form-card .cancel {
+    text-align: center;
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 34px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .account-hero .account-balance {
+        font-size: 40px;
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <link rel="stylesheet" th:href="@{/bankAccounts.css}">
+</head>
+<body>
+<div class="bankAccount">
+    <div class="accountInformation" th:object="${bankAccount}">
+        <div class="accountInformation-box">
+            <p>Owner:</p>
+            <h3 th:text="${bankAccount.name}"> </h3>
+        </div>
+        <div class="accountInformation-box">
+            <p>Account Number:</p>
+            <h3 th:text="${bankAccount.accountNumber}"></h3>
+        </div>
+        <div class="accountInformation-box">
+            <p>Balance:</p>
+            <h3 th:text="${bankAccount.balance+' kr.'}"></h3>
+        </div>
+    </div>
+
+    <form class="deposit" th:action="@{/bankAccounts/{accountNumber}/deposit(accountNumber=${bankAccount.accountNumber})}" method="post">
+        <label for="depositAmount"></label>
+        <input type="number" id="depositAmount" name="amount" step="0.01" min="0.01" placeholder="Enter amount" required>
+        <button class="button" type="submit">Deposit</button>
+    </form>
+    <form class="withdraw" th:action="@{/bankAccounts/{accountNumber}/withdraw(accountNumber=${bankAccount.accountNumber})}" method="post">
+        <label for="withdrawAmount"></label>
+        <input type="number" id="withdrawAmount" name="amount" step="0.01" min="0.01" placeholder="Enter amount" required>
+        <button class="button" type="submit">Withdraw</button>
+    </form>
+    <form class="transfer" th:action="@{/bankAccounts/{accountNumber}/transfer(accountNumber=${bankAccount.accountNumber})}" method="post">
+        <label for="transferAmount"></label>
+        <input type="number" id="transferAmount" name="amount" step="0.01" min="0.01" placeholder="Enter amount" required>
+        <label for="toAccountNumber"></label>
+        <input type="number" id="toAccountNumber" name="toAccountNumber" placeholder="Enter account number" required>
+        <button class="button" type="submit">Transfer</button>
+    </form>
+    <form class="delete" th:action="@{/bankAccounts/{accountNumber}/deleteAccount(accountNumber=${bankAccount.accountNumber})}" method="post">
+        <button class="button" type="submit">Delete Account</button>
+    </form>
+</div>
+
+</body>
+</html>

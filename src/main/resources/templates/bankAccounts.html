@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/bankAccounts.css}">
+</head>
+<body>
+
+<h1>Bank Accounts</h1>
+<form class="form-modify" th:action="@{/bankAccounts/showCreateBankAccount}" method="get">
+        <button type="submit" class="">Create Bank Account</button>
+</form>
+<div class="bankAccounts">
+    <div class="bankAccounts-box" th:each="bankAccount : ${bankAccounts}">
+        <h3 th:text="|Name: ${bankAccount.name}|">Name</h3>
+        <p th:text="|Balance: ${bankAccount.balance} kr.|"></p>
+        <p th:text="|Account Number: ${bankAccount.accountNumber}|"></p>
+        <form class="" th:action="@{/bankAccounts/{accountNumber}/showBankAccount(accountNumber=${bankAccount.accountNumber})}" method="get">
+            <button class="" type="submit">Show Account</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

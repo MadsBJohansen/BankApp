@@ -1,0 +1,279 @@
+/*.bankAccounts{*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(2, 1fr);*/
+/*    gap: 16px;*/
+/*    margin: 16px;*/
+/*    justify-content: center;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*.bankAccounts-box{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    padding: 16px;*/
+/*    gap: 16px;*/
+/*    align-items: center;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*.bankAccounts-box button{*/
+/*    margin-left: auto;*/
+/*}*/
+
+/*.accountInformation{*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(3, 1fr);*/
+/*    gap: 16px;*/
+/*    margin: 16px;*/
+/*    justify-items: center;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+/*.accountInformation-box{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    padding: 16px;*/
+/*    gap: 16px;*/
+/*    align-items: center;*/
+/*}*/
+
+/*@media (max-width: 70em) {*/
+/*    .accountInformation{*/
+/*        grid-template-columns: repeat(2, 1fr);*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 50em) {*/
+/*    .accountInformation {*/
+/*        grid-template-columns: 1fr;*/
+/*    }*/
+/*}*/
+
+/*.bankAccount p{*/
+/*    text-align: center;*/
+/*    margin: 16px;*/
+/*}*/
+
+/*.deposit{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    gap: 16px;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*#depositAmount{*/
+/*    text-align: center;*/
+/*    margin: 16px;*/
+/*}*/
+
+/*.withdraw{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    gap: 16px;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*#withdrawAmount{*/
+/*    text-align: center;*/
+/*    margin: 16px;*/
+/*}*/
+
+/*.transfer{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    gap: 16px;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*#transferAmount{*/
+/*    text-align: center;*/
+/*    margin: 16px;*/
+/*}*/
+
+/*#toAccountNumber{*/
+/*    text-align: center;*/
+/*    margin: 16px;*/
+/*}*/
+
+/*.delete{*/
+/*    display: flex;*/
+/*    margin: 16px;*/
+/*    gap: 16px;*/
+/*    justify-items: center;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*.button{*/
+/*    background-color: rgba(200, 200, 200, 0.8);*/
+/*    color: black;*/
+/*    border: black;*/
+/*    border-radius: 6px;*/
+/*    padding: 8px 16px;*/
+/*    margin: 20px;*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);*/
+/*}*/
+
+/*.button:hover {*/
+/*    background-color: rgba(200, 200, 200, 1);*/
+/*}*/
+
+body {
+    margin: 0;
+    padding: 20px 40px;
+    background-color: #141414;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    color: #e50914;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    color: #b3b3b3;
+}
+
+/* Knapper */
+button,
+.button {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover,
+.button:hover {
+    background-color: #f40612;
+}
+
+/* Inputs */
+input {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+input::placeholder {
+    color: #8c8c8c;
+}
+
+label {
+    display: block;
+    margin: 8px 0 4px;
+    color: #b3b3b3;
+}
+
+/* Create bank account */
+.form-modify {
+    margin: 16px 0;
+}
+
+/* Liste over konti */
+.bankAccounts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.bankAccounts-box {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background-color: #181818;
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bankAccounts-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.bankAccounts-box button {
+    margin-left: auto;
+}
+
+/* Kontooplysninger */
+.accountInformation {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+    justify-items: center;
+    background-color: #181818;
+    border-radius: 4px;
+}
+
+.accountInformation-box {
+    display: flex;
+    margin: 16px;
+    padding: 16px;
+    gap: 16px;
+    align-items: center;
+}
+
+@media (max-width: 70em) {
+    .accountInformation {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 50em) {
+    .accountInformation {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bankAccount p {
+    text-align: center;
+    margin: 16px;
+}
+
+/* Formularer på kontosiden */
+.deposit,
+.withdraw,
+.transfer,
+.delete {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 8px 16px;
+    background-color: #181818;
+    border-radius: 4px;
+}
+
+#depositAmount,
+#withdrawAmount,
+#transferAmount,
+#toAccountNumber {
+    text-align: center;
+    margin: 16px 0;
+}
+
+/* Delete skiller sig ud med mørkere farve */
+.delete button {
+    background-color: #5a5a5a;
+}
+
+.delete button:hover {
+    background-color: #e50914;
+}

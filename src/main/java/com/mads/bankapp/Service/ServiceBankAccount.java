@@ -35,6 +35,7 @@ public class ServiceBankAccount {
                          double amount){
         validateAmount(amount);
         BankAccount bankAccount = getBankAccount(accountNumber);
+        validateSufficientFunds(amount, bankAccount);
         double newBalance = bankAccount.getBalance() - amount;
         repoBankAccount.updateBalance(accountNumber, newBalance);
     }
@@ -48,7 +49,6 @@ public class ServiceBankAccount {
         repoBankAccount.updateBalance(accountNumber, newBalance);
     }
 
-    //Mangler at tilføje exceptions og lock
     @Transactional
     public void transfer(int fromAccountNumber,
                          int toAccountNumber,
@@ -56,6 +56,7 @@ public class ServiceBankAccount {
         validateAmount(amount);
         BankAccount from = getBankAccount(fromAccountNumber);
         BankAccount to = getBankAccount(toAccountNumber);
+        validateSufficientFunds(amount, from);
         double fromNewBalance = from.getBalance() - amount;
         double toNewBalance = to.getBalance() + amount;
         repoBankAccount.updateBalance(from.getAccountNumber(), fromNewBalance);
@@ -70,13 +71,19 @@ public class ServiceBankAccount {
         repoBankAccount.deleteById(accountNumber);
     }
 
-    public void validateAmount(double amount) {
+    private void validateAmount(double amount) {
         if(amount <= 0){
             throw new BankAccountException("Amount must be more than 0");
         }
     }
 
-    public void validateAccountNumber(int accountNumber) {
+    private void validateSufficientFunds(double amount, BankAccount bankAccount){
+        if(amount > bankAccount.getBalance()){
+            throw new BankAccountException("Insufficient funds");
+        }
+    }
+
+    private void validateAccountNumber(int accountNumber) {
         if(accountNumber <= 0){
             throw new BankAccountException("Invalid account number");
         }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR</title>
+</head>
+<body>
+    <h1>Something went wrong</h1>
+    <p th:text="${errorMessage}"></p>
+    <form class="" th:action="@{/bankAccounts/{accountNumber}/showBankAccount(accountNumber=${accountNumber})}" method="get">
+        <button class="" type="submit">Return to bank account</button>
+    </form>
+
+</body>
+</html>

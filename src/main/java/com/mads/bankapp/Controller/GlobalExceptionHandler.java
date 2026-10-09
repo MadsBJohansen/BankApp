@@ -1,7 +1,6 @@
 package com.mads.bankapp.Controller;
 
 import com.mads.bankapp.Exceptions.BankAccountException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

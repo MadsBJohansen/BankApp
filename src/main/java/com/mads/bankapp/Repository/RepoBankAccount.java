@@ -4,6 +4,11 @@ import com.mads.bankapp.Model.BankAccount;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 @Repository
@@ -14,9 +19,11 @@ public class RepoBankAccount {
             rs.getInt("accountNumber"),
             rs.getString("name"),
             rs.getDouble("balance")));
+    private final DataSource dataSource;
 
-    public RepoBankAccount(JdbcTemplate jdbcTemplate){
+    public RepoBankAccount(JdbcTemplate jdbcTemplate, DataSource dataSource){
         this.jdbcTemplate = jdbcTemplate;
+        this.dataSource = dataSource;
     }
 
     //Bruger query metoden til at hente data. Tager rowMapper og evt argumenter.
@@ -25,9 +32,21 @@ public class RepoBankAccount {
         return jdbcTemplate.query(sql, BANK_ACCOUNT_MAPPER);
     }
 
+    // Lavet med datasource, i stedet for JdbcTemplate
     public BankAccount findById(int accountNumber){
         String sql = "SELECT * FROM bankAccount where accountNumber=?";
-        return jdbcTemplate.queryForObject(sql, BANK_ACCOUNT_MAPPER, accountNumber);
+        try (Connection con = dataSource.getConnection()){
+             PreparedStatement ps = con.prepareStatement(sql);
+             ps.setInt(1, accountNumber);
+             ResultSet rs = ps.executeQuery();
+             return new BankAccount(
+                     rs.getInt("accountNumber"),
+                     rs.getString("name"),
+                     rs.getDouble("balance"));
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //Bruger update metoden til at ændre i data. Bruger IKKE rowMapper. Tager kun argumenter.
